@@ -8,16 +8,22 @@ def greet_player():
 
 def turn_str_into_int(l):
     """takes list and turns string numbers into integers"""
+    operator_list = ["+", "-", "*", "/", "**", "squares", "cubes", "pows", "%"]
+    
     new_list = []
     for item in l:
+        if item in operator_list:
+            new_list.append(item)
+
         if item.isdigit():
             new_list.append(int(item))
         else:
-            new_list.append(item)
+            new_list.append(item) 
     return new_list
 
 def play_calculator(a):
     """calls calculation functions based on user input"""
+    
     a = turn_str_into_int(a.split(" "))
 
     if a[0] == "+":
@@ -32,7 +38,7 @@ def play_calculator(a):
         print(square(a[1]))
     elif a[0] == "**" and a[2] == 3 or a[0] == "cubes":
         print(cube(a[1]))
-    elif a[0] == "**" and not a[2] == 2 and not a[2] == 3:
+    elif a[0] == "**" and not a[2] == 2 and not a[2] == 3 or a[0] == "pows":
         print(power(a[1], a[2]))
     elif a[0] == "%":
         print(mod(a[1], a[2]))
